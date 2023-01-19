@@ -1,0 +1,19 @@
+{
+	"name": "mini-2-portfolio",
+	"version": "1.0.0",
+	"description": "using bootstrap, css, htmland javascript with minor php",
+	"main": "main.js",
+	"scripts": {
+		"start": "node main.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/RTDeluna/RTDeluna.github.io.git"
+	},
+	"author": "ramueldeluna",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/RTDeluna/RTDeluna.github.io/issues"
+	},
+	"homepage": "https://github.com/RTDeluna/RTDeluna.github.io#readme"
+}
