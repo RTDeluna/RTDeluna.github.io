@@ -515,6 +515,14 @@ section {
 	color: var(--color-white);
 	margin-bottom: 1.5rem;
 }
+
+.portfolios .portfolio-item .hover-items p {
+	font-size: 1rem;
+	color: var(--color-white);
+	padding: 20px;
+	text-align: center;
+}
+
 .portfolios .portfolio-item .hover-items .icons {
 	display: flex;
 	justify-content: center;
