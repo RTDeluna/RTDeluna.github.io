@@ -304,8 +304,8 @@ h6 {
 --------------------------------------------------------------*/
 section {
 	padding: 60px 0;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 5rem;
+	padding-right: 5rem;
 	overflow: hidden;
 }
 
