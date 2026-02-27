@@ -1,0 +1,100 @@
+---
+const links = [
+  { href: '#services', label: 'Services' },
+  { href: '#results', label: 'Results' },
+  { href: '#work', label: 'Work' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header id="nav-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="text-xl font-heading font-bold text-text-primary hover:text-accent-light transition-colors">
+      RT<span class="text-accent">.</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a href={link.href} class="nav-link text-sm font-medium">
+          {link.label}
+        </a>
+      ))}
+      <a href="#contact" class="btn-primary text-sm !py-2 !px-5">
+        Let's Talk
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button
+      id="mobile-toggle"
+      class="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+      aria-label="Toggle menu"
+    >
+      <span class="hamburger-line w-6 h-0.5 bg-text-primary transition-all duration-300"></span>
+      <span class="hamburger-line w-6 h-0.5 bg-text-primary transition-all duration-300"></span>
+      <span class="hamburger-line w-4 h-0.5 bg-text-primary transition-all duration-300 ml-auto"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden">
+    <div class="glass border-t border-white/[0.06] px-6 py-6 flex flex-col gap-4">
+      {links.map((link) => (
+        <a href={link.href} class="nav-link text-base font-medium py-2 mobile-nav-link">
+          {link.label}
+        </a>
+      ))}
+      <a href="#contact" class="btn-primary text-sm text-center mt-2">
+        Let's Talk
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('nav-header');
+  const toggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-white/[0.06]');
+    } else {
+      header?.classList.remove('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-white/[0.06]');
+    }
+  }, { passive: true });
+
+  // Mobile toggle
+  let isOpen = false;
+  toggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    mobileMenu?.classList.toggle('hidden');
+    const lines = toggle.querySelectorAll('.hamburger-line');
+    if (isOpen) {
+      lines[0]?.classList.add('rotate-45', 'translate-y-[4px]');
+      lines[1]?.classList.add('opacity-0');
+      lines[2]?.classList.add('-rotate-45', '-translate-y-[4px]', 'w-6');
+    } else {
+      lines[0]?.classList.remove('rotate-45', 'translate-y-[4px]');
+      lines[1]?.classList.remove('opacity-0');
+      lines[2]?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      isOpen = false;
+      const lines = toggle?.querySelectorAll('.hamburger-line');
+      lines?.[0]?.classList.remove('rotate-45', 'translate-y-[4px]');
+      lines?.[1]?.classList.remove('opacity-0');
+      lines?.[2]?.classList.remove('-rotate-45', '-translate-y-[4px]', 'w-6');
+    });
+  });
+</script>

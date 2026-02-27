@@ -1,0 +1,50 @@
+---
+import { services } from '../data/services';
+
+const icons: Record<string, string> = {
+  target: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><circle cx="12" cy="12" r="6" stroke-width="2"/><circle cx="12" cy="12" r="2" stroke-width="2"/></svg>',
+  workflow: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+  code: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>',
+};
+---
+
+<section id="services" class="section-padding bg-bg-surface/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent font-mono text-sm mb-3">// what I do</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">
+        Services That <span class="gradient-text">Drive Results</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {services.map((service, i) => (
+        <div class={`glass-hover p-8 group reveal reveal-delay-${i + 1}`}>
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6 group-hover:bg-accent/20 transition-colors">
+            <Fragment set:html={icons[service.icon]} />
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-xl font-heading font-semibold mb-3 text-text-primary">
+            {service.title}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-text-secondary text-sm leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          <!-- Deliverables -->
+          <div class="flex flex-wrap gap-2">
+            {service.deliverables.map((item) => (
+              <span class="text-xs px-2.5 py-1 rounded-md bg-white/[0.03] text-text-muted border border-white/[0.06]">
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
