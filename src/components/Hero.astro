@@ -1,0 +1,57 @@
+---
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background effects -->
+  <div class="absolute inset-0 dot-grid opacity-40"></div>
+  <div class="gradient-orb gradient-orb-1"></div>
+  <div class="gradient-orb gradient-orb-2"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <!-- Status badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-success/10 border border-accent-success/20 mb-8 animate-fade-in">
+      <span class="w-2 h-2 rounded-full bg-accent-success animate-pulse"></span>
+      <span class="text-accent-success text-sm font-medium">Available for projects</span>
+    </div>
+
+    <!-- Main headline -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-tight mb-6 animate-fade-up">
+      I Scale Brands with
+      <span class="gradient-text"> Meta Ads</span>,
+      <span class="gradient-text"> GHL Automations</span>
+      <br class="hidden sm:block" />
+      & <span class="gradient-text">AI-Powered</span> Web Experiences
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 animate-fade-up" style="animation-delay: 0.2s;">
+      Media Buyer · GoHighLevel Expert · Web Developer & AI Vibe Coder
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay: 0.4s;">
+      <a href="#work" class="btn-primary text-base">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+        View My Work
+      </a>
+      <a href="#contact" class="btn-ghost text-base">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+        Book a Call
+      </a>
+    </div>
+
+    <!-- Floating tech badges -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-16 animate-fade-up" style="animation-delay: 0.6s;">
+      {['Meta Ads', 'GoHighLevel', 'React', 'Astro', 'AI/ML', 'Tailwind'].map((tech) => (
+        <span class="tech-badge">{tech}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

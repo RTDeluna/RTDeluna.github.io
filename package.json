@@ -1,19 +1,20 @@
 {
-	"name": "mini-2-portfolio",
-	"version": "1.0.0",
-	"description": "using bootstrap, css, htmland javascript with minor php",
-	"main": "main.js",
-	"scripts": {
-		"start": "node main.js"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+ssh://git@github.com/RTDeluna/RTDeluna.github.io.git"
-	},
-	"author": "ramueldeluna",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/RTDeluna/RTDeluna.github.io/issues"
-	},
-	"homepage": "https://github.com/RTDeluna/RTDeluna.github.io#readme"
+  "name": "ramuel-deluna-portfolio",
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.5.4",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sileo": "^0.1.5",
+    "tailwindcss": "^3.4.17"
+  }
 }

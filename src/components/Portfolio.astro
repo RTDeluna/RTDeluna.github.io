@@ -1,0 +1,128 @@
+---
+import { portfolio, categories } from '../data/portfolio';
+---
+
+<section id="work" class="section-padding bg-bg-surface/50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-accent font-mono text-sm mb-3">// portfolio</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">
+        Selected <span class="gradient-text">Work</span>
+      </h2>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12 reveal">
+      {categories.map((cat) => (
+        <button
+          data-filter={cat.key}
+          class:list={[
+            'filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300',
+            cat.key === 'all'
+              ? 'bg-accent text-white'
+              : 'bg-white/[0.03] text-text-secondary border border-white/[0.06] hover:border-accent/30 hover:text-accent-light',
+          ]}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {portfolio.map((item, i) => (
+        <div
+          class={`portfolio-item glass-hover overflow-hidden group reveal reveal-delay-${Math.min(i + 1, 5)}`}
+          data-category={item.category}
+        >
+          <!-- Image -->
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-surface via-transparent to-transparent opacity-80"></div>
+
+            <!-- Category badge -->
+            <span class="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-accent/20 text-accent-light border border-accent/20 backdrop-blur-sm">
+              {item.categoryLabel}
+            </span>
+
+            <!-- Metric badge -->
+            {item.metric && (
+              <span class="absolute top-4 right-4 text-xs px-3 py-1 rounded-full bg-accent-success/20 text-accent-success border border-accent-success/20 backdrop-blur-sm font-mono font-medium">
+                {item.metric}
+              </span>
+            )}
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="text-lg font-heading font-semibold mb-2 text-text-primary group-hover:text-accent-light transition-colors">
+              {item.title}
+            </h3>
+            <p class="text-text-secondary text-sm leading-relaxed">
+              {item.description}
+            </p>
+
+            {item.link && (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 mt-4 text-sm text-accent hover:text-accent-light transition-colors"
+              >
+                View Live
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      // Update active button
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-accent', 'text-white');
+        b.classList.add('bg-white/[0.03]', 'text-text-secondary', 'border', 'border-white/[0.06]');
+      });
+      btn.classList.add('bg-accent', 'text-white');
+      btn.classList.remove('bg-white/[0.03]', 'text-text-secondary', 'border', 'border-white/[0.06]');
+
+      // Filter items
+      items.forEach((item) => {
+        const el = item as HTMLElement;
+        const category = el.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          el.style.display = '';
+          el.style.opacity = '1';
+          el.style.transform = 'scale(1)';
+        } else {
+          el.style.opacity = '0';
+          el.style.transform = 'scale(0.95)';
+          setTimeout(() => { el.style.display = 'none'; }, 300);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .portfolio-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+</style>
